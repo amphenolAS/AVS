@@ -13,9 +13,10 @@ import com.avs.base.BaseClass;
 public class LoginPage extends BaseClass {
 
 	//Main Login Page Element definition	
-	WebElement ProductName = driver.findElementByName("ValProbe RT System");	
-	WebElement MainLoginUID = driver.findElementByAccessibilityId("LoginIDTextBox");
-	WebElement MainLoginPW = driver.findElementByAccessibilityId("PasswordTextBox");
+	WebElement ProductName = driver.findElementByName("Advanced Validation System");	
+	WebElement MainLoginUID = driver.findElementByAccessibilityId("ContentElement");
+	WebElement MainLoginPW = driver.findElementByAccessibilityId("PasswordText");
+
 	WebElement MainLoginBtn = driver.findElementByAccessibilityId("LoginButton");
 	WebElement MainLoginCnclBtn = driver.findElementByAccessibilityId("CancelButton");
 
@@ -65,8 +66,11 @@ public class LoginPage extends BaseClass {
 	//Enter User PW: {0}")
 	public void EnterUserPW(String PW) 
 	{
-		ClearText(MainLoginPW);
-		enterText(MainLoginPW, PW);
+		clickOn(MainLoginPW);
+		WebElement MainLoginPW1 = driver.findElementByAccessibilityId("PasswordTextBox");
+		ClearText(MainLoginPW1);
+		enterText(MainLoginPW1, PW);
+		
 	}
 	
 	//Get the User PW field data...")
@@ -112,7 +116,7 @@ public class LoginPage extends BaseClass {
 	//Verify the InvalidLoginAlertmsgPresence...")
 	public boolean InvalidLoginAlertmsgPresence() 
 	{
-		WebElement InvalidLoginMsg = driver.findElementByAccessibilityId("displayMessageTextBlock");
+		WebElement InvalidLoginMsg = driver.findElementByAccessibilityId("dispalyMessageTextBlock");
 		return IsElementVisibleStatus(InvalidLoginMsg);
 	}
 	
@@ -195,7 +199,10 @@ public class LoginPage extends BaseClass {
 	public MainHubPage Login(String UID, String PW) throws InterruptedException 
 	{		
 		EnterUserID(UID);
+		Thread.sleep(1000);	
+		
 		EnterUserPW(PW);
+		
 		ClickLoginBtn();
 		Thread.sleep(1000);	
 		

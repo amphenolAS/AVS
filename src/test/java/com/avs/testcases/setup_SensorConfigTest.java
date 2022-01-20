@@ -110,7 +110,7 @@ public class setup_SensorConfigTest extends BaseClass{
 
 		// Before Method(Test) method
 		@BeforeMethod(alwaysRun = true)
-		public void Setup() throws InterruptedException {
+		public void Setup() throws InterruptedException, IOException {
 			LaunchApp("Kaye.ValProbeRT_racmveb2qnwa8!App");
 			Thread.sleep(1000);
 			LoginPage = new LoginPage();
@@ -153,7 +153,7 @@ public class setup_SensorConfigTest extends BaseClass{
 		// SET002
 		@Test(groups = {
 				"Regression" }, description = "SET 002-UI_Verify if on Asset Details  page the _Setups_ tile is active")
-		public void SET002() throws InterruptedException {
+		public void SET002() throws InterruptedException, IOException {
 			extentTest = extent
 					.startTest("SET 002-UI_Verify if on Asset Details  page the _Setups_ tile is active");
 			SoftAssert sa = new SoftAssert();

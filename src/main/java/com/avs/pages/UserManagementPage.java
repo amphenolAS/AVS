@@ -32,7 +32,6 @@ public class UserManagementPage extends BaseClass {
 	WebElement PhoneUMField = driver.findElementByAccessibilityId("PhoneTextBox");
 	WebElement EmailUMField = driver.findElementByAccessibilityId("EmailTextBox");
 	WebElement DeleteUMBtn = driver.findElementByName("Delete");
-	
 
 	WebElement UMAssetPriv = driver.findElementByAccessibilityId("AssetsPrivlegesCheckBox");
 	WebElement UMSetupPriv = driver.findElementByAccessibilityId("SetupCreationCheckBox");
@@ -42,7 +41,7 @@ public class UserManagementPage extends BaseClass {
 	WebElement SaveUMBtn = driver.findElementByName("Save");
 	WebElement CancelUMBtn = driver.findElementByName("Cancel");
 
-	//User Privilege element definition
+	// User Privilege element definition
 	WebElement AdminPriv = driver.findElementByAccessibilityId("AdminCheckBox");
 	WebElement CreaeteEditAssetPriv = driver.findElementByAccessibilityId("AssetsPrivlegesCheckBox");
 	WebElement CreaeteEditSetupPriv = driver.findElementByAccessibilityId("SetupCreationCheckBox");
@@ -64,7 +63,7 @@ public class UserManagementPage extends BaseClass {
 	WebElement DeletePassFailTemplate = driver.findElementByAccessibilityId("DeleteTemplateCheckBox");
 	WebElement DisableCheckbox = driver.findElementByAccessibilityId("DisableUserCheckBox");
 	WebElement UsersListButton = driver.findElementByAccessibilityId("PrintUsersListButton");
-	
+
 	/*----------------------
 	Methods of UserManagement Page
 	------------------------*/
@@ -77,7 +76,7 @@ public class UserManagementPage extends BaseClass {
 		return IsElementEnabledStatus(NewUserUMBtn);
 	}
 
-	//check if Save Button Enable
+	// check if Save Button Enable
 	public boolean IsSaveButtonEnable() {
 		return IsElementEnabledStatus(SaveUMBtn);
 	}
@@ -98,42 +97,42 @@ public class UserManagementPage extends BaseClass {
 		return IsElementEnabledStatus(UNUMField);
 	}
 
-	//Verify the UserID Field presence...")
+	// Verify the UserID Field presence...")
 	public boolean UserIDFieldPresence() {
 		return IsElementEnabledStatus(UserIDUMField);
 	}
 
-	//Verify the Password Field presence...")
+	// Verify the Password Field presence...")
 	public boolean PassworFieldPresence() {
 		return IsElementEnabledStatus(PWUMField);
 	}
 
-	//Verify the ConPassword Field presence...")
+	// Verify the ConPassword Field presence...")
 	public boolean ConPassworFieldPresence() {
 		return IsElementEnabledStatus(ConPWUMField);
 	}
 
-	//Verify the Title Field presence...")
+	// Verify the Title Field presence...")
 	public boolean TitleFieldPresence() {
 		return IsElementEnabledStatus(TitleUMField);
 	}
 
-	//Verify the UserType Field presence...")
+	// Verify the UserType Field presence...")
 	public boolean UserTypeField_EnableState() {
 		return IsElementEnabledStatus(UserTypeUMDropDown);
 	}
 
-	//Verify the Phone Field presence...")
+	// Verify the Phone Field presence...")
 	public boolean PhoneFieldPresence() {
 		return IsElementEnabledStatus(PhoneUMField);
 	}
 
-	//Verify the Email Field presence...")
+	// Verify the Email Field presence...")
 	public boolean EmailFieldPresence() {
 		return IsElementEnabledStatus(EmailUMField);
 	}
 
-	//Verify the Email Field presence...")
+	// Verify the Email Field presence...")
 	public boolean PrivillagecheckboxPresence() {
 		return IsElementEnabledStatus(UMAssetPriv);
 	}
@@ -142,6 +141,12 @@ public class UserManagementPage extends BaseClass {
 	public String GetUserNametext() {
 		return FetchText(UNUMField);
 	}
+	
+	//PWUMField
+	
+	public String GetPWFieldText() {
+		return FetchText(PWUMField);
+	}
 
 	// Enter User ID text
 	public void enterNewUserID(String NewUID) {
@@ -149,12 +154,12 @@ public class UserManagementPage extends BaseClass {
 		enterText(UserIDUMField, NewUID);
 	}
 
-	//Fetch User Name text
+	// Fetch User Name text
 	public String GetUserIDtext() {
 		return FetchText(UserIDUMField);
 	}
 
-	//Enter PW text
+	// Enter PW text
 	public void enterNewUserPW(String NewPW) {
 		ClearText(PWUMField);
 		enterText(PWUMField, NewPW);
@@ -171,6 +176,11 @@ public class UserManagementPage extends BaseClass {
 		ClearText(TitleUMField);
 		enterText(TitleUMField, Title);
 		Thread.sleep(1000);
+	}
+
+	// Fetch Title text
+	public String get_UserTitle() {
+		return FetchText(TitleUMField);
 	}
 
 	// Enter Title text
@@ -203,6 +213,36 @@ public class UserManagementPage extends BaseClass {
 			Thread.sleep(500);
 		}
 
+	}
+
+	// fetch text from Utype drop down
+	public String FetchTxtfrom_UserType_dd(int i) throws InterruptedException {
+
+		clickOn(UserTypeUMDropDown);
+		List<WebElement> Usertypes = driver.findElementsByClassName("ComboBoxItem");
+		return FetchText(Usertypes.get(i));
+
+	}
+
+	// Click Phone Filed
+	public void ClickPhone() {
+		clickOn(PhoneUMField);
+	}
+
+	// Fetch Phone Filed text
+	public String get_PhoneUMFieldText() {
+		return FetchText(PhoneUMField);
+	}
+	
+	// Fetch Phone Filed text
+		public String get_EmailUMFieldText() {
+			return FetchText(EmailUMField);
+		}
+
+	// FetchText from UserTypeUMDropDown
+	public String FetchTxt_UserType() throws InterruptedException {
+
+		return FetchText(UserTypeUMDropDown);
 	}
 
 	// Click the UserType Drop down List
@@ -246,6 +286,32 @@ public class UserManagementPage extends BaseClass {
 		clickOn(SaveUMBtn);
 		Thread.sleep(1000);
 	}
+	// Click On All Checked boxes to customized the privileges
+		public void Click_AllCheckBox() throws InterruptedException, AWTException {
+			ClkscrollBar_up();
+			clickOn(AdminPriv);
+			clickOn(RunQualification);
+			clickOn(RunCalibration);
+			clickOn(CreaeteEditAssetPriv);
+			clickOn(DeleteAssets);
+			clickOn(CopyFilesReports);
+			clickOn(CreaeteEditSetupPriv);
+			clickOn(DeleteSetup);
+			clickOn(ArchiveData);
+			clickOn(CreaeteEditEquipPriv);
+			clickOn(DeleteEquipment);
+			clickOn(ManualSync);
+			clickOn(CreateReports);
+			clickOn(DeleteStudyFiles);
+			clickOn(CameraAccess);
+			ClkscrollBar_down();
+			clickOn(CreatePassFailTemplate);
+			clickOn(EditPassFailTemplate);
+			clickOn(DeletePassFailTemplate);
+			clickOn(AuditTrail);
+			// Thread.sleep(1000);
+		}
+
 
 	// Click Back Button to move to AdminTile
 	public MainHubPage ClickBackButn() {
@@ -375,6 +441,11 @@ public class UserManagementPage extends BaseClass {
 		Thread.sleep(1000);
 	}
 
+	// public boolean CreaeteEditAssetPrivstatus() {
+	public boolean DisableUserCheckBox_state() {
+		return checkboxSelectStatus(DisableCheckbox);
+	}
+
 	// Verify if Create/Edit Asset Privilege checked/selected or not
 	public boolean PrivCreateEditAssetgstatus() {
 		return checkboxSelectStatus(UMAssetPriv);
@@ -424,16 +495,17 @@ public class UserManagementPage extends BaseClass {
 		select_UserType(Utype);
 		ClickNewUserSaveButton();
 	}
-	// Checking Admin Privileges Without saving the data 
-		public void UMPrivilages(String UName, String UID, String Pwd, String Cpwd, String Titl, String Utype)
-				throws InterruptedException {
-			enterNewUserName(UName);
-			enterNewUserID(UID);
-			enterNewUserPW(Pwd);
-			enterNewUserConfPW(Cpwd);
-			enterNewUserTitle(Titl);
-			select_UserType(Utype);
-		}
+
+	// Checking Admin Privileges Without saving the data
+	public void UMPrivilages(String UName, String UID, String Pwd, String Cpwd, String Titl, String Utype)
+			throws InterruptedException {
+		enterNewUserName(UName);
+		enterNewUserID(UID);
+		enterNewUserPW(Pwd);
+		enterNewUserConfPW(Cpwd);
+		enterNewUserTitle(Titl);
+		select_UserType(Utype);
+	}
 
 	// User Management Creation with Non Mandatory fields
 	public void UMCreation_NonmandatoryFields(String UName, String UID, String Pwd, String Cpwd, String Titl,
@@ -460,7 +532,7 @@ public class UserManagementPage extends BaseClass {
 		select_UserType(Utype);
 		ClickNewUserSaveButton();
 	}
-	
+
 	// Checking save button is Disable before entering confirm password field in
 	// User Management Creation
 	public void UMDisablesaveButton1(String UName, String UID, String pwd, String Titl, String Utype)
@@ -505,32 +577,40 @@ public class UserManagementPage extends BaseClass {
 		WebElement LgInPopup = driver.findElementByName("Enter User Credentials");
 		return IsElementVisibleStatus(LgInPopup);
 	}
-	
+
 	// Click on the User Image Tile Button
 	public void click_UserImageTile() throws InterruptedException {
-		WebElement 	UserImgTileBtn = driver.findElementByAccessibilityId("UserImage");
+		WebElement UserImgTileBtn = driver.findElementByAccessibilityId("UserImage");
 		clickOn(UserImgTileBtn);
 		Thread.sleep(1000);
 	}
 
 	// Click the Browse button under User Image tile
 	public void click_UploadBrowseBtn() throws InterruptedException {
-		WebElement 	BrowseBtn = driver.findElementByAccessibilityId("BrowseButton");
+		WebElement BrowseBtn = driver.findElementByAccessibilityId("BrowseButton");
 		clickOn(BrowseBtn);
 		Thread.sleep(1000);
 	}
+
 	// Click the Camera Icon under User Image tile
-		public void click_CameraIcon() throws InterruptedException {
-			WebElement 	CameraIcon = driver.findElementByAccessibilityId("CameraImage");
-			clickOn(CameraIcon);
-			Thread.sleep(2000);
+	public void click_CameraIcon() throws InterruptedException {
+		WebElement CameraIcon = driver.findElementByAccessibilityId("CameraImage");
+		clickOn(CameraIcon);
+		Thread.sleep(2000);
+	}
+	
+	// Camera On Header Title is Visible ...
+		public boolean IsCameracloseBtn_Enable() {
+			WebElement CameraClose = driver.findElementByAccessibilityId("Close");
+			return IsElementEnabledStatus(CameraClose);
 		}
-		// Camera On Header Title  is Visible ...
-		public boolean CameraOnTitleVisible() {
-			WebElement IsCameraOn = driver.findElementByName("Camera");
-				return IsElementVisibleStatus(IsCameraOn);
-			}	
-	//AccessibilityText	
+
+	// Camera On Header Title is Visible ...
+	public boolean CameraOnTitleVisible() {
+		WebElement IsCameraOn = driver.findElementByName("Camera");
+		return IsElementVisibleStatus(IsCameraOn);
+	}
+	// AccessibilityText
 
 	// Upload images methods
 	public void upload_UserImage(String filename) throws AWTException, IOException, InterruptedException {
@@ -554,156 +634,200 @@ public class UserManagementPage extends BaseClass {
 		// switch back
 		driver.switchTo().activeElement();
 	}
-	
+
 	// DisableUserCheckBox
-	
+
 	// check/select Disable User CheckBox
-		public void Select_DisableUserCheckBox() throws InterruptedException {
-			clickOn(DisableCheckbox);
-		}
+	public void Select_DisableUserCheckBox() throws InterruptedException {
+		clickOn(DisableCheckbox);
+	}
 // Click the created User Name
-		
 
 // Does it display the Save Alert message if a user disable his own account
-		public boolean DisableAlertMsgVisible()throws InterruptedException {
-			WebElement Dmsg = driver.findElementByName("Sorry, you cannot delete or disable the Logged in User Account");
-			return IsElementVisibleStatus(Dmsg);
-		}
-		
+	public boolean DisableAlertMsgVisible() throws InterruptedException {
+		WebElement Dmsg = driver.findElementByName("Sorry, you cannot delete or disable the Logged in User Account");
+		return IsElementVisibleStatus(Dmsg);
+	}
+
 // Verify if Admin Privilege checked/selected or not
-		public boolean Adminstatus() {
-			return checkboxSelectStatus(AdminPriv);
-		}
+	public boolean Adminstatus() {
+		return checkboxSelectStatus(AdminPriv);
+	}
+
 // Verify if Create/Edit Equipment Privilege checked/selected or not
-				public boolean CreateAndEditEquipmentstatus() {
-					return checkboxSelectStatus(CreaeteEditEquipPriv);
-				}
+	public boolean CreateAndEditEquipmentstatus() {
+		return checkboxSelectStatus(CreaeteEditEquipPriv);
+	}
+
 // Verify if Create Reports Privilege checked/selected or not
-				public boolean CreateReportsstatus() {
-					return checkboxSelectStatus(CreateReports);
-				}
+	public boolean CreateReportsstatus() {
+		return checkboxSelectStatus(CreateReports);
+	}
+
 // Verify if Create Pass/Fail template Privilege checked/selected or not
-				public boolean CreatePassFailtemplatestatus() {
-					return checkboxSelectStatus(CreatePassFailTemplate);
-				}
+	public boolean CreatePassFailtemplatestatus() {
+		return checkboxSelectStatus(CreatePassFailTemplate);
+	}
+
 // Verify if Audit trail template Privilege checked/selected or not
-				public boolean Audittrailstatus() {
-					return checkboxSelectStatus(AuditTrail);
-				}
+	public boolean Audittrailstatus() {
+		return checkboxSelectStatus(AuditTrail);
+	}
+
 // Verify if Delete Assets Privilege checked/selected or not
-				public boolean DeleteAssetsstatus() {
-					return checkboxSelectStatus(DeleteAssets );
-				}
+	public boolean DeleteAssetsstatus() {
+		return checkboxSelectStatus(DeleteAssets);
+	}
+
 // Verify if Delete Setup Privilege checked/selected or not
-				public boolean DeleteSetupstatus() {
-					return checkboxSelectStatus(DeleteSetup);
-				}
+	public boolean DeleteSetupstatus() {
+		return checkboxSelectStatus(DeleteSetup);
+	}
+
 // Verify if Delete Equipment Privilege checked/selected or not
-				public boolean DeleteEquipmentstatus() {
-					return checkboxSelectStatus(DeleteEquipment);
-				}
+	public boolean DeleteEquipmentstatus() {
+		return checkboxSelectStatus(DeleteEquipment);
+	}
+
 // Verify if Delete Study Files/Reports Privilege checked/selected or not
-				public boolean DeleteStudyFilesReportsstatus() {
-					return checkboxSelectStatus(DeleteStudyFiles);
-				}
+	public boolean DeleteStudyFilesReportsstatus() {
+		return checkboxSelectStatus(DeleteStudyFiles);
+	}
+
 // Verify if Edit Pass/Fail template Privilege checked/selected or not
-				public boolean EditPassFailtemplatestatus() {
-					return checkboxSelectStatus(EditPassFailTemplate);
-				}
+	public boolean EditPassFailtemplatestatus() {
+		return checkboxSelectStatus(EditPassFailTemplate);
+	}
+
 // Verify if Copy Files/Reports Privilege checked/selected or not
-				public boolean CopyFilesReportsstatus() {
-					return checkboxSelectStatus(CopyFilesReports);
-				}
+	public boolean CopyFilesReportsstatus() {
+		return checkboxSelectStatus(CopyFilesReports);
+	}
+
 // Verify if Archive data Privilege checked/selected or not
-				public boolean Archivedatastatus() {
-					return checkboxSelectStatus(ArchiveData);
-				}
+	public boolean Archivedatastatus() {
+		return checkboxSelectStatus(ArchiveData);
+	}
+
 // Verify if Camera Access Privilege checked/selected or not
-				public boolean CameraAccessstatus() {
-					return checkboxSelectStatus(CameraAccess);
-				}
+	public boolean CameraAccessstatus() {
+		return checkboxSelectStatus(CameraAccess);
+	}
+
 //Verify if Manual Sync Privilege checked/selected or not
-               public boolean ManualSyncstatus() {
-	              return checkboxSelectStatus(ManualSync);
-                }
+	public boolean ManualSyncstatus() {
+		return checkboxSelectStatus(ManualSync);
+	}
+
 // Verify if Delete pass/fail template Privilege checked/selected or not
-				public boolean Deletepassfailtemplatestatus() {
-					return checkboxSelectStatus(DeletePassFailTemplate);
-				}
+	public boolean Deletepassfailtemplatestatus() {
+		return checkboxSelectStatus(DeletePassFailTemplate);
+	}
+
 // Verify if Create/Edit Asset Privilege checked/selected or not
-				public boolean CreaeteEditAssetPrivstatus() {
-					return checkboxSelectStatus(CreaeteEditAssetPriv);
-				}
-	//Click on the Create/Edit Asset Privilege Check Box	
-				public void Click_CreaeteEditAssetCheckBox()
-				{
-					clickOn(CreaeteEditAssetPriv);
-				}
-				
-				
-				
+	public boolean CreaeteEditAssetPrivstatus() {
+		return checkboxSelectStatus(CreaeteEditAssetPriv);
+	}
+
+	// Click on the Create/Edit Asset Privilege Check Box
+	public void Click_CreaeteEditAssetCheckBox() {
+		clickOn(CreaeteEditAssetPriv);
+	}
+
 // Verify if Create/Edit setup Privilege checked/selected or not
-				public boolean CreaeteEditSetupstatus() {
-					return checkboxSelectStatus(CreaeteEditSetupPriv);
-				}
+	public boolean CreaeteEditSetupstatus() {
+		return checkboxSelectStatus(CreaeteEditSetupPriv);
+	}
+
 // Verify if Run Qualification Privilege checked/selected or not
-				public boolean RunQualificationstatus() {
-					return checkboxSelectStatus(RunQualification);
-				}
+	public boolean RunQualificationstatus() {
+		return checkboxSelectStatus(RunQualification);
+	}
+
 // Verify if Run Calibration  Privilege checked/selected or not
-				public boolean RunCalibrationstatus() {
-					return checkboxSelectStatus(RunCalibration );
-		}
-			
+	public boolean RunCalibrationstatus() {
+		return checkboxSelectStatus(RunCalibration);
+	}
+
 // Click UsersListButton button
-             public void ClickUsersListButton() {
-					clickOn(UsersListButton);
-				}
-     // To open the user list pop up  presence
-         	public boolean UserListOpenPopupvisible() throws InterruptedException {
-         	 driver.switchTo().activeElement();
-        		Thread.sleep(1000);
-         		WebElement UserlistopenPopup = driver.findElementByAccessibilityId("HeadText");
-         		return IsElementVisibleStatus(UserlistopenPopup);
-         	}
-         	//Click on Delete button
-         	public void ClickDeletebtn() {
-         		clickOn(DeleteUMBtn);
-         	}
-        	
-         // confirmation pop-up should be displayed for Delete user
-         	
-         	public boolean confirmationPopupvisible() throws InterruptedException {
-         		WebElement DeletePopup = driver.findElementByAccessibilityId("TitleBar");
-         		return IsElementVisibleStatus(DeletePopup);
-         	}
-         	//Click on  "Yes" button from the delete confirmation pop-up 
-         	public void Delete_ClickYesBtn() throws InterruptedException {
-         		WebElement Yesbtn = driver.findElementByAccessibilityId("Button1");
-         		clickOn(Yesbtn);
-         	}
-         	//Click on  "No" button from the delete confirmation pop-up 
-         	public void Delete_ClickNoBtn() throws InterruptedException {
-         		WebElement Nobtn = driver.findElementByAccessibilityId("Button0");
-         		clickOn(Nobtn);
-         	}
+	public void ClickUsersListButton() {
+		clickOn(UsersListButton);
+	}
+
+	// To open the user list pop up presence
+	public boolean UserListOpenPopupvisible() throws InterruptedException {
+		driver.switchTo().activeElement();
+		Thread.sleep(1000);
+		WebElement UserlistopenPopup = driver.findElementByAccessibilityId("HeadText");
+		return IsElementVisibleStatus(UserlistopenPopup);
+	}
+
+	// Click on Delete button
+	public void ClickDeletebtn() {
+		clickOn(DeleteUMBtn);
+	}
+
+	// confirmation pop-up should be displayed for Delete user
+
+	public boolean confirmationPopupvisible() throws InterruptedException {
+		WebElement DeletePopup = driver.findElementByAccessibilityId("TitleBar");
+		return IsElementVisibleStatus(DeletePopup);
+	}
+
+	// Click on "Yes" button from the delete confirmation pop-up
+	public void Delete_ClickYesBtn() throws InterruptedException {
+		WebElement Yesbtn = driver.findElementByAccessibilityId("Button1");
+		clickOn(Yesbtn);
+	}
+
+	// Click on "No" button from the delete confirmation pop-up
+	public void Delete_ClickNoBtn() throws InterruptedException {
+		WebElement Nobtn = driver.findElementByAccessibilityId("Button0");
+		clickOn(Nobtn);
+	}
+	
+	// Click on "Yes" button from the delete confirmation pop-up
+		public void Click_OKBtn() throws InterruptedException {
+			WebElement OKbtn = driver.findElementByName("Ok");
+			clickOn(OKbtn);
+		}
+	
+	
 // Deleted alert message visible
-         	
-         	public boolean Delete_alertvisible() throws InterruptedException {
-         		WebElement Deletealert = driver.findElementByAccessibilityId("displayMessageTextBlock");
-         		return IsElementVisibleStatus(Deletealert);
-         	}
-         	
-         	//Click on the Search box and enter valid user name
-         	public void EnterdatainSearchBox(String entrUN) throws InterruptedException {
-         		WebElement SrchBox = driver.findElementByAccessibilityId("SearchTextBox");
-         		clickOn(SrchBox);
-         		enterText(SrchBox,entrUN);
-         	}
-         	//User1
-         	public boolean IsSearchNamevisible() throws InterruptedException {
-         		WebElement srchname = driver.findElementByName("User1");
-         		return IsElementVisibleStatus(srchname);
-         	}
-         	       	
+
+	public boolean Delete_alertvisible() throws InterruptedException {
+		WebElement Deletealert = driver.findElementByAccessibilityId("displayMessageTextBlock");
+		return IsElementVisibleStatus(Deletealert);
+	}
+
+	// Click on the Search box and enter valid user name
+	public void EnterdatainSearchBox(String entrUN) throws InterruptedException {
+		WebElement SrchBox = driver.findElementByAccessibilityId("SearchTextBox");
+		clickOn(SrchBox);
+		enterText(SrchBox, entrUN);
+	}
+
+	// User1
+	public boolean IsSearchNamevisible() throws InterruptedException {
+		WebElement srchname = driver.findElementByName("User1");
+		return IsElementVisibleStatus(srchname);
+	}
+	// Scroll Up and click 3 times
+		public void ClkscrollBar_up() throws InterruptedException, AWTException {
+
+			WebElement scrollbar = driver.findElementByAccessibilityId("VerticalSmallDecrease");
+			clickOn(scrollbar);
+			clickOn(scrollbar);
+			clickOn(scrollbar);
+		}
+
+		// Scroll down and click 3 times
+		public void ClkscrollBar_down() throws InterruptedException, AWTException {
+
+			WebElement scrollbar = driver.findElementByAccessibilityId("VerticalSmallIncrease");
+			clickOn(scrollbar);
+			clickOn(scrollbar);
+			clickOn(scrollbar);
+		}
+
 }

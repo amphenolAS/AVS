@@ -5,6 +5,7 @@
 
 package com.avs.pages;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import com.avs.base.BaseClass;
+import com.avs.pages.assetCreationPage;
 
 public class assetHubPage extends BaseClass{
 	
@@ -125,6 +127,8 @@ public class assetHubPage extends BaseClass{
 		return IsElementVisibleStatus(AddAssetBtn);
 	}
 	
+
+	
 	//Click the Add Asset Button
 	public assetCreationPage ClickAddAssetBtn() throws InterruptedException {
 		
@@ -189,7 +193,7 @@ public class assetHubPage extends BaseClass{
 	
 	
 	//Click/Select the target Asset tile in the Asset hub page
-	public assetDetailsPage click_assetTile(String AssetName) {
+	public assetDetailsPage click_assetTile(String AssetName) throws IOException {
 		List<WebElement> AssetList = driver.findElementByAccessibilityId("ItemGridView")
 				.findElements(By.className("GridViewItem"));
 		//System.out.println("Total Assets created: " + AssetList.size());
