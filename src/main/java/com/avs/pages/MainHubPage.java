@@ -5,15 +5,19 @@
 
 package com.avs.pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.avs.base.BaseClass;
+import com.avs.pages.assetHubPage;
+import com.avs.pages.EquipmentHubPage;
 
 public class MainHubPage extends BaseClass {
 
 	// Main Hub Page Element definition
-	WebElement MainUILoggedinUserTitle = driver.findElementByAccessibilityId("UserDesignationTextBlock");
+	//WebElement MainUILoggedinUserTitle = driver.findElementByAccessibilityId("UserDesignationTextBlock");
 	WebElement MainUILoggedinUserName = driver.findElementByAccessibilityId("UserNameTextBlock");
 	WebElement MainUIAdminTile = driver.findElementByName("Admin");
 	WebElement MainUIAssetTile = driver.findElementByName("Assets");
@@ -53,12 +57,33 @@ public class MainHubPage extends BaseClass {
 		return new UserManagementPage();
 	}
 	
+	// Click the Admin Tile when SuperVisor does not have default access privilege
+		public void ClickAdminTile() throws InterruptedException {
+			clickOn(MainUIAdminTile);
+			Thread.sleep(500);
+		}
+
+		// Fetch the alert message when Supervisor is unable to access Archive data
+		public String AlertMsg() {
+			WebElement Msg = driver.findElementByAccessibilityId("displayMessageTextBlock");
+			return FetchText(Msg);
+		}
+
+	
 	//Click the Asset Tile
 	public assetHubPage ClickAssetTile() throws InterruptedException {
 		clickOn(MainUIAssetTile);
 		Thread.sleep(1000);
 		return new assetHubPage();
 	}
+	// Click the Asset Tile
+	public assetHubPage Click_AssetTile2() throws InterruptedException, IOException {
+		WebElement MainUIAssetTile = driver.findElementByName("Assets");
+		clickOn(MainUIAssetTile);
+		Thread.sleep(500);
+		return new assetHubPage();
+	}
+
 	
 	//Fetch the Asset count data in the Asset Tile
 	public String AssetCountInAssetTileOfMainHubPage() throws InterruptedException {
@@ -75,16 +100,23 @@ public class MainHubPage extends BaseClass {
 		}
 		
 		//Click the Equipment Tile
-				public FileManagementPage ClickFileManagementTitle() throws InterruptedException {
+				public FileManagementPage ClickFileManagementTitle() throws InterruptedException, IOException {
 					clickOn(FileManagementTitle);
 					Thread.sleep(1000);
 					return new FileManagementPage();
 				}
 		
 	//Click the Audit Title 
-				public AuditPage ClickAuditTitle() throws InterruptedException {
+				public AuditPage ClickAuditTitle() throws InterruptedException, IOException {
 					clickOn(AuditTitle);
 					Thread.sleep(1000);
 					return new AuditPage();
-				}				
+				}	
+				
+	// Click the Audit Title
+				public void Alert_AuditTitle() throws InterruptedException {
+					clickOn(AuditTitle);
+					Thread.sleep(500);
+				}
+				
 }

@@ -322,7 +322,7 @@ public class assetHubTest extends BaseClass {
 			description = "Verify all the changes made to the asset are displayed correctly at Asset Hub Page")
 	public void ASST147(String Name, String ID, String Type, String Manufacturer, String Location, String Model,
 			String Size, String SizeUnit, String Frequency, String FrequencyInterval, String Description)
-			throws InterruptedException {
+			throws InterruptedException, IOException {
 		extentTest = extent.startTest("ASST147-Verify all the changes made to the asset are displayed"
 				+ " correctly at Asset Hub Page");
 		SoftAssert sa1 = new SoftAssert();

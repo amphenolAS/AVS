@@ -17,6 +17,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import com.avs.pages.EquipmentPage;
+import com.avs.pages.Equipment_IRTDHubPage;
 import com.avs.base.BaseClass;
 
 public class EquipmentHubPage extends BaseClass {
@@ -48,6 +49,24 @@ public class EquipmentHubPage extends BaseClass {
 					WebElement irtdbox = driver.findElementByName("IRTD");
 					clickOn(irtdbox);
 					return new IRTDHubPage();
+				}
+				
+				// Click AddButton to get Alert message when supervisor does not have default
+				// privilege
+				public void Alert_ClickAddBtn() throws InterruptedException {
+					clickOn(AddButton);
+					Thread.sleep(1000);
+				}
+				// Alert message for non default privilege of supervisor
+				public String AlertMsg() {
+					WebElement Msg = driver.findElementByAccessibilityId("displayMessageTextBlock");
+					return FetchText(Msg);
+				}
+				// Click on IRTD List box of Equipment page
+				public Equipment_IRTDHubPage click_IRTDTile() throws IOException {
+					WebElement irtdbox = driver.findElementByName("IRTD");
+					clickOn(irtdbox);
+					return new Equipment_IRTDHubPage();
 				}
 
 }

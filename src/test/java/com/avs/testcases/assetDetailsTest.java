@@ -116,7 +116,7 @@ public class assetDetailsTest extends BaseClass {
 
 	// Before Method(Test) method
 	@BeforeMethod(alwaysRun = true)
-	public void Setup() throws InterruptedException {
+	public void Setup() throws InterruptedException, IOException {
 		LaunchApp("Kaye.ValProbeRT_racmveb2qnwa8!App");
 		Thread.sleep(1000);
 		LoginPage = new LoginPage();
@@ -175,7 +175,7 @@ public class assetDetailsTest extends BaseClass {
 	@Test(groups = { "Sanity", "Regression" }, description = "ASST017-Verify if Edit Icon is present"
 			+ " at the right top corner of assets detail page and opens the Edit asset - asset details "
 			+ "screen with the possibility to edit the selected asset")
-	public void ASST017() throws InterruptedException {
+	public void ASST017() throws InterruptedException, IOException {
 		extentTest = extent
 				.startTest("ASST017-Verify if clicking Edit Icon in assets " + "detail page opens the Edit asset");
 		SoftAssert sa = new SoftAssert();
@@ -199,7 +199,7 @@ public class assetDetailsTest extends BaseClass {
 	// 03-ASST018
 	@Test(groups = { "Sanity", "Regression" }, description = "ASST018-Verify if clicking on "
 			+ "Back Button at the left top to return to Assets Hub page")
-	public void ASST018() throws InterruptedException {
+	public void ASST018() throws InterruptedException, IOException {
 		extentTest = extent
 				.startTest("ASST018-Verify if clicking on Back Button at the left top to return to Assets Hub page");
 		SoftAssert sa = new SoftAssert();
@@ -218,7 +218,7 @@ public class assetDetailsTest extends BaseClass {
 	// 04-ASST020
 	@Test(groups = { "Sanity", "Regression" }, description = "ASST020-Verify if the data displayed "
 			+ "in the assets detail page is exactly same as the information given for asset in Create new Asset page")
-	public void ASST020() throws InterruptedException, ParseException {
+	public void ASST020() throws InterruptedException, ParseException, IOException {
 		extentTest = extent.startTest("ASST020-Verify if the data displayed in the assets detail page "
 				+ "is exactly same as the information given for asset in Create new Asset page");
 		SoftAssert sa = new SoftAssert();
@@ -316,11 +316,11 @@ public class assetDetailsTest extends BaseClass {
 		assetDetailsPage.click_DocsTileBtn();
 		assetDetailsPage.click_UploadDocsBtn();		
 		//Upload File 1
-		assetDetailsPage.uploadDoc_Assetdetails("HelpFileWord.docx");		
+		//assetDetailsPage.uploadDoc_Assetdetails("HelpFileWord.docx");		
 		assetDetailsPage.click_DocsTileBtn();
 		assetDetailsPage.click_UploadDocsBtn();
 		//Upload File 2
-		assetDetailsPage.uploadDoc_Assetdetails("RW Review_Chapter 4.pdf");			
+		//assetDetailsPage.uploadDoc_Assetdetails("RW Review_Chapter 4.pdf");			
 
 		sa.assertEquals(assetDetailsPage.docsTile_countdata(), "2",
 				"FAIL: TC-ASST024 - Docs tile count not matching to the total amount of Docs(2) uploaded");
@@ -338,11 +338,11 @@ public class assetDetailsTest extends BaseClass {
 		assetDetailsPage.click_DocsTileBtn();
 		assetDetailsPage.click_UploadDocsBtn();		
 		//Upload File 1
-		assetDetailsPage.uploadDoc_Assetdetails("HelpFileWordPartOneReview.docx");		
+		//assetDetailsPage.uploadDoc_Assetdetails("HelpFileWordPartOneReview.docx");		
 		assetDetailsPage.click_DocsTileBtn();
 		assetDetailsPage.click_UploadDocsBtn();
 		//Upload File 2
-		assetDetailsPage.uploadDoc_Assetdetails("HelpFileWordPartOneReview.docx");	
+		//assetDetailsPage.uploadDoc_Assetdetails("HelpFileWordPartOneReview.docx");	
 		
 		String expAlert_msg = "Another file with same name already exists. Please use different name.";
 		String actAlert_msg = assetDetailsPage.alertMeg_duplicateDocupload_Assetdetails();
@@ -391,7 +391,7 @@ public class assetDetailsTest extends BaseClass {
 		extentTest = extent.startTest("ASST034-Verify if only one Asset is available then copy setup screen should not allow any action");
 		SoftAssert sa = new SoftAssert();
 
-		assetDetailsPage.click_CopyStup_Btn();
+		//assetDetailsPage.click_CopyStup_Btn();
 		
 		String expAlert_msg = "To perform Copy Setup more than 1 asset required.";
 		String actAlert_msg = assetDetailsPage.alertMeg_CopyAsset_WithOneAsset();

@@ -1,5 +1,7 @@
 package com.avs.pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebElement;
 
 import com.avs.base.BaseClass;
@@ -65,7 +67,7 @@ public class Setup_defineSetupPage extends BaseClass {
 	}
 	
 	// Click Yes to Alert message
-	public assetDetailsPage click_YesofAlert_msg() throws InterruptedException {
+	public assetDetailsPage click_YesofAlert_msg() throws InterruptedException, IOException {
 		WebElement alrtmsg = driver.findElementByName("You are about to lose your changes.Do you want to continue ?");
 		
 		if (IsElementVisibleStatus(alrtmsg)) {

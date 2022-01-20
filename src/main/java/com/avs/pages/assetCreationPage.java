@@ -5,6 +5,7 @@
 
 package com.avs.pages;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -397,11 +398,17 @@ public class assetCreationPage extends BaseClass{
 	}
 	
 	//click Back button to move to assetHub Page in case new Asset is created
-	public assetDetailsPage click_BackBtn() throws InterruptedException {
+	public assetDetailsPage click_BackBtn() throws InterruptedException, IOException {
 		clickOn(AssetBackBtn);
 		Thread.sleep(1000);
 		return new assetDetailsPage();
 	}
+	// Click on Camera Icon for Asset Image
+		public void click_CameraIcon() throws InterruptedException {
+			WebElement CameraIcon = driver.findElementByAccessibilityId("CameraImage");
+			clickOn(CameraIcon);
+
+		}
 	
 	//click Back button to get the Discard message
 	public void clickBkBtn() throws InterruptedException {
@@ -409,6 +416,13 @@ public class assetCreationPage extends BaseClass{
 		Thread.sleep(1000);		
 	}
 	
+
+	// Camera On Header Title is Visible ...
+	public boolean CameraOnTitleVisible() {
+		WebElement IsCameraOn = driver.findElementByName("Camera");
+		return IsElementVisibleStatus(IsCameraOn);
+	}
+
 	//Discard alert message
 	public boolean discardAlert() throws InterruptedException {
 		clickOn(AssetBackBtn);		
@@ -446,6 +460,12 @@ public class assetCreationPage extends BaseClass{
 		clickSaveBtn();		
 	}
 	
+	// Edit Asset header Title is displaying..
+		public boolean IsEditAssetscreenDisplayed() {
+			WebElement EAHeaderText = driver.findElementByName("Edit Asset");
+			return IsElementEnabledStatus(EAHeaderText);
+		}
+
 	//Asset Creation with all Data entry
 	public void assetCreationWithAllFieldEntry(String AName, String AID, String AType, 
 			String AManufacturer, String ALocation, String AModel, String ASize, String AUnit, 

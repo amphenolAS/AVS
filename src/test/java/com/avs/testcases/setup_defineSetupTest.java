@@ -110,7 +110,7 @@ public class setup_defineSetupTest extends BaseClass{
 
 	// Before Method(Test) method
 	@BeforeMethod(alwaysRun = true)
-	public void Setup() throws InterruptedException {
+	public void Setup() throws InterruptedException, IOException {
 		LaunchApp("Kaye.ValProbeRT_racmveb2qnwa8!App");
 		Thread.sleep(1000);
 		LoginPage = new LoginPage();
@@ -153,7 +153,7 @@ public class setup_defineSetupTest extends BaseClass{
 	// 01-SET002
 	@Test(groups = {
 			"Regression" }, description = "SET 002-UI_Verify if on Asset Details  page the _Setups_ tile is active")
-	public void SET002() throws InterruptedException {
+	public void SET002() throws InterruptedException, IOException {
 		extentTest = extent
 				.startTest("SET 002-UI_Verify if on Asset Details  page the _Setups_ tile is active");
 		SoftAssert sa = new SoftAssert();
@@ -196,7 +196,7 @@ public class setup_defineSetupTest extends BaseClass{
 	@Test(groups = {
 			"Regression" }, description = "SET 010- UI_Verify if _New Setup_, _Type of Asset_ , _Equipment Name_ is "
 					+ "displayed at the top left of the Define Setup page when clicked on _ (+) New_ button in Asset details page.")
-	public void SET010() throws InterruptedException {
+	public void SET010() throws InterruptedException, IOException {
 		extentTest = extent
 				.startTest("SET 010- UI_Verify if _New Setup_, _Type of Asset_ , _Equipment Name_ is displayed at the top left of the "
 						+ "Define Setup page when clicked on _ (+) New_ button in Asset details page.");
@@ -281,7 +281,7 @@ public class setup_defineSetupTest extends BaseClass{
 	@Test(groups = {
 			"Sanity", "Regression" }, description = "SET 013- UI_Verify if  _ Asset ID_ (prepoluted field) "
 					+ "is displayed in the _Define Setup_ screen.")
-	public void SET013() throws InterruptedException {
+	public void SET013() throws InterruptedException, IOException {
 		extentTest = extent
 				.startTest("SET 013-Verify if Asset ID (prepoluted field) is displayed in the _Define Setup_ screen.");
 		SoftAssert sa = new SoftAssert();
@@ -290,7 +290,7 @@ public class setup_defineSetupTest extends BaseClass{
 		//System.out.println(AssetIDTxtinSetup);		
 		defineSetupPage.click_defineSetupPage_backBtn();
 		assetDetailsPage=defineSetupPage.click_YesofAlert_msg();
-		assetCreationPage = assetDetailsPage.click_AssetEditBtn();
+		assetCreationPage = assetDetailsPage.click_assetEditBtn();
 		String AssetIDTxtinAssetEditPage = assetCreationPage.getEqpID();
 		//System.out.println(AssetIDTxtinAssetEditPage);
 
@@ -304,7 +304,7 @@ public class setup_defineSetupTest extends BaseClass{
 	@Test(groups = {
 			"Sanity", "Regression" }, description = "'SET 017-UI_Verify if the setup name field, "
 					+ "by default is displayed as current date and 24 hour time format DD-MMM-YYYY HH-MM-SS")
-	public void SET017() throws InterruptedException, ParseException {
+	public void SET017() throws InterruptedException, ParseException, IOException {
 		extentTest = extent
 				.startTest("'SET 017-UI_Verify if the setup name field, by default is displayed "
 						+ "as current date and 24 hour time format DD-MMM-YYYY HH-MM-SS");
@@ -637,7 +637,7 @@ public class setup_defineSetupTest extends BaseClass{
 	@Test(groups = { "Sanity", "Regression" }, 
 			description = "SET 030- Fnc_Verify if clicking on _Yes_ discards the changes made "
 					+ "and bring application back to Assets details page")
-	public void SET030() throws InterruptedException, ParseException {
+	public void SET030() throws InterruptedException, ParseException, IOException {
 		extentTest = extent.startTest(
 				"SET 030- Fnc_Verify if clicking on _Yes_ discards the changes made and bring "
 				+ "application back to Assets details page");

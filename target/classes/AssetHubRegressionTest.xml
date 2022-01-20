@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="AssetHubSuite" parallel="false">
+	<listeners>
+		<!-- <listener class-name="com.avs.Listners.ExtentReporterNG" /> -->
+		<listener class-name="com.avs.Listners.AllureReportListner" />
+		<listener class-name="com.avs.Listners.RetryTransformer" />
+	</listeners>
+
+	<test name="AssetHubRregressionTest">
+		<groups>
+			<run>
+				<include name="Regression"></include>
+			</run>
+		</groups>
+
+		<classes>
+			<class name="com.avs.testcases.assetHubTest" />
+		</classes>
+	</test> <!-- AssetHubSanityTest -->
+</suite> <!-- AssetHubSuite -->
