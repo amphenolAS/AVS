@@ -782,6 +782,25 @@ public class UM1 extends BaseClass {
 			sa.assertEquals(UserManagementPage.get_UserTitle(), "FullAdmin" , "FAIL: User title is not available");
 			sa.assertAll();
 		}
+		//UM027-create users and confirm that the details given at the time of user creation is exactly getting reflected
+		
+				@Test(groups = { "Regression" }, description = "UM027-create users and confirm that the details given at the time of user creation is exactly getting reflected")
+
+				public void UM027_1() throws InterruptedException {
+					extentTest = extent.startTest("UM027-create users and confirm that the details given at the time of user creation is exactly getting reflected");
+
+					SoftAssert sa = new SoftAssert();
+
+					UserManagementPage.UMCreation_MandatoryFields("UM027", "27", "1234569", "1234569", "Admin",
+							"System Administrator");
+					UserLoginPopup(getUID("adminFull"), getPW("adminFull"));
+				
+					sa.assertEquals(UserManagementPage.GetUserNametext(), "User1" , "FAIL: User name is not available");
+					sa.assertEquals(UserManagementPage.GetUserIDtext(), "27" , "FAIL: User id is not available");
+					sa.assertEquals(UserManagementPage.FetchTxt_UserType(), "System Administrator" , "FAIL: User type is not available");
+					sa.assertEquals(UserManagementPage.get_UserTitle(), "FullAdmin" , "FAIL: User title is not available");
+					sa.assertAll();
+				}
 		
 	//UM028-Confirm if the user  is able to perform access all the privilages
 	//Check if the Operator can access the privillaged modules and modules which the permissions are denied, an appropriate warning message appears as “User doesn’t have sufficient privileges to perform this operation!.
